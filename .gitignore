@@ -1,13 +1,16 @@
-# Visual Studio
 .vs/
 **/.vs/
 *.slnx
 
-# Build
-**/bin/
-**/obj/
+/bin
+/obj
 
-# User-specific
 *.user
 *.suo
 *.log
+
+/node_modules
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
