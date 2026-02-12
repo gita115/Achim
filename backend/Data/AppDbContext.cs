@@ -1,7 +1,7 @@
-﻿using Achim.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Domain.Entities;
 
-namespace Achim.Data
+namespace Data
 {
     public class AppDbContext : DbContext
     {
