@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\gitty\\projects\\Achim\\AchimProject\\Achim\\Achim.csproj": {}
+    "C:\\Users\\gitty\\source\\projects\\Achim\\backend\\Achim.csproj": {}
   },
   "projects": {
-    "C:\\gitty\\projects\\Achim\\AchimProject\\Achim\\Achim.csproj": {
+    "C:\\Users\\gitty\\source\\projects\\Achim\\backend\\Achim.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\gitty\\projects\\Achim\\AchimProject\\Achim\\Achim.csproj",
+        "projectUniqueName": "C:\\Users\\gitty\\source\\projects\\Achim\\backend\\Achim.csproj",
         "projectName": "Achim",
-        "projectPath": "C:\\gitty\\projects\\Achim\\AchimProject\\Achim\\Achim.csproj",
+        "projectPath": "C:\\Users\\gitty\\source\\projects\\Achim\\backend\\Achim.csproj",
         "packagesPath": "C:\\Users\\gitty\\.nuget\\packages\\",
-        "outputPath": "C:\\gitty\\projects\\Achim\\AchimProject\\Achim\\obj\\",
+        "outputPath": "C:\\Users\\gitty\\source\\projects\\Achim\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

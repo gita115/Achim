@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xTQFr1HCses=",
+  "dgSpecHash": "dyu3G0CR2zA=",
   "success": true,
-  "projectFilePath": "C:\\gitty\\projects\\Achim\\AchimProject\\Achim\\Achim.csproj",
+  "projectFilePath": "C:\\Users\\gitty\\source\\projects\\Achim\\backend\\Achim.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gitty\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\gitty\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",
