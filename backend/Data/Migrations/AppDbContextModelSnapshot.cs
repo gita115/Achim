@@ -22,7 +22,7 @@ namespace Achim.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Achim.Models.Category", b =>
+            modelBuilder.Entity("Entities.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -44,7 +44,7 @@ namespace Achim.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("Achim.Models.DownloadLog", b =>
+            modelBuilder.Entity("Entities.DownloadLog", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -70,7 +70,7 @@ namespace Achim.Migrations
                     b.ToTable("DownloadLogs");
                 });
 
-            modelBuilder.Entity("Achim.Models.Image", b =>
+            modelBuilder.Entity("Entities.Image", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -117,7 +117,7 @@ namespace Achim.Migrations
                     b.ToTable("Images");
                 });
 
-            modelBuilder.Entity("Achim.Models.ImageTag", b =>
+            modelBuilder.Entity("Entities.ImageTag", b =>
                 {
                     b.Property<int>("ImageId")
                         .HasColumnType("int");
@@ -132,7 +132,7 @@ namespace Achim.Migrations
                     b.ToTable("ImageTags");
                 });
 
-            modelBuilder.Entity("Achim.Models.Organization", b =>
+            modelBuilder.Entity("Entities.Organization", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -144,12 +144,16 @@ namespace Achim.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Organizations");
                 });
 
-            modelBuilder.Entity("Achim.Models.Purchase", b =>
+            modelBuilder.Entity("Entities.Purchase", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -185,7 +189,7 @@ namespace Achim.Migrations
                     b.ToTable("Purchases");
                 });
 
-            modelBuilder.Entity("Achim.Models.Tag", b =>
+            modelBuilder.Entity("Entities.Tag", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -202,7 +206,7 @@ namespace Achim.Migrations
                     b.ToTable("Tags");
                 });
 
-            modelBuilder.Entity("Achim.Models.User", b =>
+            modelBuilder.Entity("Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -239,9 +243,9 @@ namespace Achim.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Achim.Models.Category", b =>
+            modelBuilder.Entity("Entities.Category", b =>
                 {
-                    b.HasOne("Achim.Models.Category", "ParentCategory")
+                    b.HasOne("Entities.Category", "ParentCategory")
                         .WithMany("SubCategories")
                         .HasForeignKey("ParentCategoryId")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -249,15 +253,15 @@ namespace Achim.Migrations
                     b.Navigation("ParentCategory");
                 });
 
-            modelBuilder.Entity("Achim.Models.DownloadLog", b =>
+            modelBuilder.Entity("Entities.DownloadLog", b =>
                 {
-                    b.HasOne("Achim.Models.Image", "Image")
+                    b.HasOne("Entities.Image", "Image")
                         .WithMany("DownloadLogs")
                         .HasForeignKey("ImageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Achim.Models.User", "User")
+                    b.HasOne("Entities.User", "User")
                         .WithMany("DownloadLogs")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -268,26 +272,24 @@ namespace Achim.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Achim.Models.Image", b =>
+            modelBuilder.Entity("Entities.Image", b =>
                 {
-                    b.HasOne("Achim.Models.Category", "Category")
+                    b.HasOne("Entities.Category", null)
                         .WithMany("Images")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("Achim.Models.ImageTag", b =>
+            modelBuilder.Entity("Entities.ImageTag", b =>
                 {
-                    b.HasOne("Achim.Models.Image", "Image")
+                    b.HasOne("Entities.Image", "Image")
                         .WithMany("ImageTags")
                         .HasForeignKey("ImageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Achim.Models.Tag", "Tag")
+                    b.HasOne("Entities.Tag", "Tag")
                         .WithMany("ImageTags")
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -298,15 +300,15 @@ namespace Achim.Migrations
                     b.Navigation("Tag");
                 });
 
-            modelBuilder.Entity("Achim.Models.Purchase", b =>
+            modelBuilder.Entity("Entities.Purchase", b =>
                 {
-                    b.HasOne("Achim.Models.Image", "Image")
+                    b.HasOne("Entities.Image", "Image")
                         .WithMany("Purchases")
                         .HasForeignKey("ImageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Achim.Models.User", "User")
+                    b.HasOne("Entities.User", "User")
                         .WithMany("Purchases")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -317,9 +319,9 @@ namespace Achim.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Achim.Models.User", b =>
+            modelBuilder.Entity("Entities.User", b =>
                 {
-                    b.HasOne("Achim.Models.Organization", "Organization")
+                    b.HasOne("Entities.Organization", "Organization")
                         .WithMany("Users")
                         .HasForeignKey("OrganizationId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -328,14 +330,14 @@ namespace Achim.Migrations
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("Achim.Models.Category", b =>
+            modelBuilder.Entity("Entities.Category", b =>
                 {
                     b.Navigation("Images");
 
                     b.Navigation("SubCategories");
                 });
 
-            modelBuilder.Entity("Achim.Models.Image", b =>
+            modelBuilder.Entity("Entities.Image", b =>
                 {
                     b.Navigation("DownloadLogs");
 
@@ -344,17 +346,17 @@ namespace Achim.Migrations
                     b.Navigation("Purchases");
                 });
 
-            modelBuilder.Entity("Achim.Models.Organization", b =>
+            modelBuilder.Entity("Entities.Organization", b =>
                 {
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("Achim.Models.Tag", b =>
+            modelBuilder.Entity("Entities.Tag", b =>
                 {
                     b.Navigation("ImageTags");
                 });
 
-            modelBuilder.Entity("Achim.Models.User", b =>
+            modelBuilder.Entity("Entities.User", b =>
                 {
                     b.Navigation("DownloadLogs");
 

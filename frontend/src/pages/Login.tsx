@@ -1,41 +1,58 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-// import { request } from '../core/api'
+import { authService } from '../services/authService'
 
 const Login = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [name, setName] = useState('')
+  const [passwordHash, setpasswordHash] = useState('')
   const [error, setError] = useState('')
   const navigate = useNavigate()
 
   const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault() 
+    setError('')
+
     try {
-      // const res = await request.post('/login', { email, password })
-      // localStorage.setItem('token', res.data.token)
-      navigate('/dashboard')
+      const res = await authService.login(name, passwordHash)
+
+      localStorage.setItem('organization', res.name)
+      localStorage.setItem('isAdmin', res.isAdmin ? 'true' : 'false')
+
+      if (res.isAdmin) navigate('/admin/dashboard')
+      else navigate('/')
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Login failed')
+      console.error(err)
+      setError(err.response?.data?.message || 'שם או סיסמא שגויים')
     }
   }
 
-  return ( 
+  return (
     <div style={{ maxWidth: 400, margin: '50px auto' }}>
       <h2>Login</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleLogin}>
         <div>
-          <label>Email</label>
-          <input type="email" value={email} onChange={e => setEmail(e.target.value)} required />
+          <label>Name</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
         </div>
         <div>
           <label>Password</label>
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
+          <input
+            type="password"
+            value={passwordHash}
+            onChange={(e) => setpasswordHash(e.target.value)}
+            required
+          />
         </div>
         <button type="submit">Login</button>
       </form>
     </div>
-  );
-};
+  )
+}
 
 export default Login

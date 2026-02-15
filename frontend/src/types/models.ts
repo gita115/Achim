@@ -33,7 +33,7 @@ export interface User {
   export interface Category {
     id: number
     name: string
-    parentCategoryId?: number
+    parentCategoryId?: number | null
   }
   
   export interface Tag {

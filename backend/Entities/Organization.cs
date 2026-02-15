@@ -1,0 +1,11 @@
+﻿namespace Entities
+{
+    public class Organization
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = null!;
+        public string PasswordHash { get; set; } = null;
+        public ICollection<User> Users { get; set; } = new List<User>();
+
+    }
+}

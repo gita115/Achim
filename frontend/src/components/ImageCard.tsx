@@ -1,14 +1,19 @@
-import type { Image } from '../types/models'
+import type { Image } from "../types/models";
 
-interface Props { image: Image }
-
-export default function ImageCard({ image }: Props) {
+export default function ImageCard({ image }: { image: Image }) {
   return (
-    <div className='border rounded p-2 shadow'>
-      <img src={image.thumbnailPath} alt={image.title} className='w-full h-40 object-cover rounded' />
-      <h3 className='text-sm font-bold mt-2'>{image.title}</h3>
-      <p className='text-xs text-gray-500'>{image.photographer} - {image.year}</p>
-      <p className='text-xs text-green-600'>{image.price} ₪</p>
+    <div style={{
+      border: "1px solid #ddd",
+      padding: 10,
+      borderRadius: 8
+    }}>
+      <img
+        src={image.thumbnailPath}
+        style={{ width: "100%" }}
+      />
+      <h4>{image.title}</h4>
+      <p>₪{image.price}</p>
+      <button>View</button>
     </div>
   )
 }

@@ -1,3 +1,11 @@
+C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\Achim.csproj.AssemblyReference.cache
+C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\Achim.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\Achim.AssemblyInfoInputs.cache
+C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\Achim.AssemblyInfo.cs
+C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\Achim.csproj.CoreCompileInputs.cache
+C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\Achim.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\Achim.sourcelink.json
 C:\Users\gitty\source\projects\Achim\backend\bin\Debug\net10.0\appsettings.Development.json
 C:\Users\gitty\source\projects\Achim\backend\bin\Debug\net10.0\appsettings.json
 C:\Users\gitty\source\projects\Achim\backend\bin\Debug\net10.0\Achim.staticwebassets.endpoints.json
@@ -131,14 +139,6 @@ C:\Users\gitty\source\projects\Achim\backend\bin\Debug\net10.0\runtimes\win\lib\
 C:\Users\gitty\source\projects\Achim\backend\bin\Debug\net10.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\gitty\source\projects\Achim\backend\bin\Debug\net10.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\gitty\source\projects\Achim\backend\bin\Debug\net10.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\Achim.csproj.AssemblyReference.cache
-C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\rpswa.dswa.cache.json
-C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\Achim.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\Achim.AssemblyInfoInputs.cache
-C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\Achim.AssemblyInfo.cs
-C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\Achim.csproj.CoreCompileInputs.cache
-C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\Achim.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\Achim.sourcelink.json
 C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\rjimswa.dswa.cache.json
 C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
 C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
@@ -154,3 +154,5 @@ C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\refint\Achim.dll
 C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\Achim.pdb
 C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\Achim.genruntimeconfig.cache
 C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\ref\Achim.dll
+C:\Users\gitty\source\projects\Achim\backend\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
