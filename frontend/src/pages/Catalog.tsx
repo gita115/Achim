@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import {imageService} from "../services/imageService"
 import ImageCard from "../components/ImageCard"
 import type { Image } from "../types/models"
+import imageService from "../services/imageService"
 
 export default function CatalogPage() {
   const [images, setImages] = useState<Image[]>([])

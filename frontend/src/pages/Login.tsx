@@ -7,9 +7,11 @@ const Login = () => {
   const [passwordHash, setpasswordHash] = useState('')
   const [error, setError] = useState('')
   const navigate = useNavigate()
+  const [show, setShow] = useState(false)
+
 
   const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault() 
+    e.preventDefault()
     setError('')
 
     try {
@@ -42,12 +44,20 @@ const Login = () => {
         </div>
         <div>
           <label>Password</label>
+
+
+
+
           <input
-            type="password"
+            type={show ? "text" : "password"}
             value={passwordHash}
             onChange={(e) => setpasswordHash(e.target.value)}
             required
           />
+
+          <button type="button" onClick={() => setShow(!show)}>
+            {show ? "🙈" : "👁"}
+          </button>
         </div>
         <button type="submit">Login</button>
       </form>
