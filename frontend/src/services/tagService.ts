@@ -1,17 +1,17 @@
-import { http } from "./http"
+import { api } from "./api"
 
 export const tagService = {
   getAll: async () => {
-    const res = await http.get("/tags")
+    const res = await api.get("/tags")
     return res.data
   },
 
   create: async (tag: any) => {
-    const res = await http.post("/tags", tag)
+    const res = await api.post("/tags", tag)
     return res.data
   },
 
   remove: async (id: number) => {
-    await http.delete(`/tags/${id}`)
+    await api.delete(`/tags/${id}`)
   }
 }

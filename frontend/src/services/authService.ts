@@ -1,4 +1,4 @@
-import { http } from './http'
+import { api } from './api'
 
 interface AuthResponse {
   name: string
@@ -7,7 +7,7 @@ interface AuthResponse {
 
 export const authService = {
   login: async (name: string, passwordHash: string): Promise<AuthResponse> => {
-    const res = await http.post<AuthResponse>('/auth/login', { name, passwordHash })
+    const res = await api.post<AuthResponse>('/auth/login', { name, passwordHash })
     return res.data
   }
 }

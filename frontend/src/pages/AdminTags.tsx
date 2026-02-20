@@ -1,49 +1,47 @@
 import { useEffect, useState } from "react"
-import {tagService} from "../services/tagService"
+import { tagService } from "../services/tagService"
+import { Button, Card } from "../components/Ui"
 import type { Tag } from "../types/models"
 
 export default function AdminTags() {
   const [tags, setTags] = useState<Tag[]>([])
   const [name, setName] = useState("")
 
+  const load = async () => {
+    const res = await tagService.getAll()
+    setTags(res)
+  }
+
   useEffect(() => {
     load()
   }, [])
 
-  const load = async () => {
-    const data = await tagService.getAll()
-    setTags(data)
-  }
-
-  const handleSubmit = async () => {
-    if (!name) return
-
-    await tagService.create({
-      id: 0,
-      name
-    })
-
+  const addTag = async () => {
+    await tagService.create({ name })
     setName("")
     load()
   }
 
+  const deleteTag = async (id: number) => {
+    await tagService.remove(id)
+    load()
+  }
+
   return (
-    <div style={{ padding: 30 }}>
-      <h2>Manage Tags</h2>
+    <div>
+      <h2>Tags</h2>
 
-      <input
-        placeholder="Tag Name"
-        value={name}
-        onChange={e => setName(e.target.value)}
-      />
+      <div className="form-row">
+        <input value={name} onChange={e => setName(e.target.value)} />
+        <Button onClick={addTag}>Add</Button>
+      </div>
 
-      <button onClick={handleSubmit}>Add Tag</button>
-
-      <ul>
-        {tags.map(t => (
-          <li key={t.id}>{t.name}</li>
-        ))}
-      </ul>
+      {tags.map(t => (
+        <Card key={t.id}>
+          {t.name}
+          <Button onClick={() => deleteTag(t.id)}>Delete</Button>
+        </Card>
+      ))}
     </div>
   )
 }

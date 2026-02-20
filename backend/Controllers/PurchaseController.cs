@@ -15,7 +15,6 @@ public class PurchasesController : ControllerBase
         _context = context;
     }
 
-    [Authorize]
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
@@ -24,7 +23,6 @@ public class PurchasesController : ControllerBase
             .ToListAsync());
     }
 
-    [Authorize]
     [HttpPost]
     public async Task<IActionResult> Create(Purchase purchase)
     {
@@ -32,4 +30,25 @@ public class PurchasesController : ControllerBase
         await _context.SaveChangesAsync();
         return Ok(purchase);
     }
+
+    [HttpPost("pay")]
+    public async Task<IActionResult> Pay(List<int> imageIds)
+    {
+        foreach (var id in imageIds)
+        {
+            _context.Purchases.Add(new Purchase
+            {
+                UserId = 1,
+                ImageId = id,
+                Amount = 0,
+                PurchaseDate = DateTime.UtcNow,
+                PaymentStatus = "Completed",
+                PaymentProvider = "Demo"
+            });
+        }
+
+        await _context.SaveChangesAsync();
+        return Ok();
+    }
+
 }
