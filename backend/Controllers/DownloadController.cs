@@ -29,21 +29,27 @@ public class DownloadsController : ControllerBase
             return Unauthorized();
 
         var image = await _context.Images.FindAsync(imageId);
+        if (image == null) return NotFound();
 
         var log = new DownloadLog
         {
             UserId = userId,
             ImageId = imageId,
-            DownloadDate = DateTime.Now
+            DownloadDate = DateTime.UtcNow
         };
 
         _context.DownloadLogs.Add(log);
         await _context.SaveChangesAsync();
 
-        var path = Path.Combine(Directory.GetCurrentDirectory(), image.FilePath);
+        var fullPath = Path.Combine(
+            Directory.GetCurrentDirectory(),
+            "wwwroot",
+            image.FilePath.TrimStart('/')
+        );
 
-        var bytes = await System.IO.File.ReadAllBytesAsync(path);
+        var bytes = await System.IO.File.ReadAllBytesAsync(fullPath);
 
-        return File(bytes, "application/octet-stream", "image.jpg");
+        return File(bytes, "application/octet-stream", Path.GetFileName(fullPath));
     }
+
 }

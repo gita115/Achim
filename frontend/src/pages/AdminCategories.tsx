@@ -8,7 +8,7 @@ export default function AdminCategories() {
   const [parentId, setParentId] = useState<number | null>(null)
 
   const [deleteTarget, setDeleteTarget] = useState<Category | null>(null)
-  const [deleteMode, setDeleteMode] = useState<"deleteAll" | "moveToRoot" | "moveToOther" >("deleteAll")
+  const [deleteMode, setDeleteMode] = useState<"deleteAll" | "moveToRoot" | "moveToOther">("deleteAll")
   const [newParentId, setNewParentId] = useState<number | null>(null)
 
   useEffect(() => {
@@ -35,67 +35,67 @@ export default function AdminCategories() {
   }
 
 
-const [expandedNodes, setExpandedNodes] = useState<number[]>([])
-const [selectedNode, setSelectedNode] = useState<number | null>(null)
+  const [expandedNodes, setExpandedNodes] = useState<number[]>([])
+  const [selectedNode, setSelectedNode] = useState<number | null>(null)
 
-const toggleExpand = (id: number) => {
-  setExpandedNodes(prev =>
-    prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]
-  )
-}
+  const toggleExpand = (id: number) => {
+    setExpandedNodes(prev =>
+      prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]
+    )
+  }
 
-const renderTree = (nodes: Category[], level = 0) => {
-  return nodes.map(node => {
-    const hasChildren = node.subCategories && node.subCategories.length > 0
-    const isExpanded = expandedNodes.includes(node.id)
-    const isSelected = selectedNode === node.id
+  const renderTree = (nodes: Category[], level = 0) => {
+    return nodes.map(node => {
+      const hasChildren = node.subCategories && node.subCategories.length > 0
+      const isExpanded = expandedNodes.includes(node.id)
+      const isSelected = selectedNode === node.id
 
-    return (
-      <div key={node.id} style={{ marginLeft: level * 24 }}>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "8px 12px",
-            marginBottom: 4,
-            borderRadius: 8,
-            background: isSelected ? "#e3f2fd" : "#f5f5f5",
-            cursor: "pointer",
-            transition: "0.2s"
-          }}
-          onClick={() => setSelectedNode(node.id)}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            {hasChildren && (
-              <span
-                onClick={(e) => {
-                  e.stopPropagation()
-                  toggleExpand(node.id)
-                }}
-                style={{ marginRight: 6 }}
-              >
-                {isExpanded ? "▼" : "▶"}
-              </span>
+      return (
+        <div key={node.id} style={{ marginLeft: level * 24 }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "8px 12px",
+              marginBottom: 4,
+              borderRadius: 8,
+              background: isSelected ? "#e3f2fd" : "#f5f5f5",
+              cursor: "pointer",
+              transition: "0.2s"
+            }}
+            onClick={() => setSelectedNode(node.id)}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              {hasChildren && (
+                <span
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    toggleExpand(node.id)
+                  }}
+                  style={{ marginRight: 6 }}
+                >
+                  {isExpanded ? "▼" : "▶"}
+                </span>
+              )}
+              <strong>{node.name}</strong>
+            </div>
+
+            {isSelected && (
+              <div style={{ display: "flex", gap: 6 }}>
+                <button onClick={() => setParentId(node.id)}>➕</button>
+                <button onClick={() => handleEdit(node)}>✏️</button>
+                <button onClick={() => setDeleteTarget(node)}>🗑</button>
+              </div>
             )}
-            <strong>{node.name}</strong>
           </div>
 
-          {isSelected && (
-            <div style={{ display: "flex", gap: 6 }}>
-              <button onClick={() => setParentId(node.id)}>➕</button>
-              <button onClick={() => handleEdit(node)}>✏️</button>
-              <button onClick={() => setDeleteTarget(node)}>🗑</button>
-            </div>
-          )}
+          {hasChildren && isExpanded &&
+            renderTree(node.subCategories!, level + 1)}
         </div>
-
-        {hasChildren && isExpanded &&
-          renderTree(node.subCategories!, level + 1)}
-      </div>
-    )
-  })
-}
+      )
+    })
+  }
 
 
 
@@ -151,12 +151,14 @@ const renderTree = (nodes: Category[], level = 0) => {
       {deleteTarget && (
         <div className="popup">
           <h3>Delete {deleteTarget.name}</h3>
-
+          {deleteTarget.subCategories && deleteTarget.subCategories.length > 0 && (
+            <>
+            <p>This category has subcategories. What would you like to do?</p>
           <button onClick={() => setDeleteMode("deleteAll")}>
             Delete Children Too
           </button>
 
-          <button onClick={() => {setDeleteMode("moveToRoot"); setNewParentId(null)}}>
+          <button onClick={() => { setDeleteMode("moveToRoot"); setNewParentId(null) }}>
             Move Children To Root
           </button>
 
@@ -176,7 +178,8 @@ const renderTree = (nodes: Category[], level = 0) => {
                 ))}
             </select>
           )}
-
+</>
+        )}
           <button onClick={handleDeleteConfirmed}>Confirm</button>
           <button onClick={() => setDeleteTarget(null)}>Cancel</button>
         </div>

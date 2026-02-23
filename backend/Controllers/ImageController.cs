@@ -1,7 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Data;
+﻿using Data;
 using Entities;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Processing;
+using SixLabors.ImageSharp.Drawing.Processing;
+using SixLabors.ImageSharp.PixelFormats;
+
 
 [ApiController]
 [Route("api/[controller]")]
@@ -47,7 +52,7 @@ public class ImagesController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(Image image)
+    public async Task<IActionResult> Create(Entities.Image image)
     {
         _context.Images.Add(image);
         await _context.SaveChangesAsync();
@@ -55,7 +60,7 @@ public class ImagesController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, Image image)
+    public async Task<IActionResult> Update(int id, Entities.Image image)
     {
         var existing = await _context.Images
             .Include(i => i.ImageTags)
@@ -86,22 +91,98 @@ public class ImagesController : ControllerBase
 
     [HttpPost("upload")]
     public async Task<IActionResult> Upload(
-    [FromForm] IFormFile file,
-    [FromForm] string title,
-    [FromForm] string description,
-    [FromForm] int categoryId,
-    [FromForm] decimal price,
-    [FromForm] string photographer,
-    [FromForm] int year,
-    [FromForm] bool isActive)
+     [FromForm] IFormFile file,
+     [FromForm] string title,
+     [FromForm] string description,
+     [FromForm] int categoryId,
+     [FromForm] decimal price,
+     [FromForm] string photographer,
+     [FromForm] int year,
+     [FromForm] bool isActive,
+     [FromForm] List<int> tagIds)
     {
-        var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
-        var path = Path.Combine("wwwroot/images", fileName);
+        if (file == null || file.Length == 0)
+            return BadRequest("File is required");
 
-        using var stream = new FileStream(path, FileMode.Create);
-        await file.CopyToAsync(stream);
+        var categoryExists = await _context.Categories
+            .AnyAsync(c => c.Id == categoryId);
 
-        var image = new Image
+        if (!categoryExists)
+            return BadRequest("Invalid category");
+
+        var safeTitle = string.Join("_", title.Split(Path.GetInvalidFileNameChars()));
+        var extension = Path.GetExtension(file.FileName);
+        var fileName = $"{Guid.NewGuid()}_{safeTitle}{extension}";
+
+        var imagesFolder = Path.Combine(
+            Directory.GetCurrentDirectory(),
+            "wwwroot",
+            "images"
+        );
+
+        var thumbsFolder = Path.Combine(imagesFolder, "thumbs");
+
+        if (!Directory.Exists(imagesFolder))
+            Directory.CreateDirectory(imagesFolder);
+
+        if (!Directory.Exists(thumbsFolder))
+            Directory.CreateDirectory(thumbsFolder);
+
+        var fullPath = Path.Combine(imagesFolder, fileName);
+        var thumbPath = Path.Combine(thumbsFolder, fileName);
+
+        using (var stream = new FileStream(fullPath, FileMode.Create))
+        {
+            await file.CopyToAsync(stream);
+        }
+
+        using (var imageSharp = await SixLabors.ImageSharp.Image.LoadAsync<Rgba32>(fullPath))
+        {
+            imageSharp.Mutate(x => x.Resize(new ResizeOptions
+            {
+                Mode = ResizeMode.Max,
+                Size = new Size(800, 800)   
+            }));
+
+            var watermarkPath = Path.Combine(
+                Directory.GetCurrentDirectory(),
+                "wwwroot",
+                "logo.PNG"
+            );
+
+            using var watermark = await SixLabors.ImageSharp.Image.LoadAsync<Rgba32>(watermarkPath);
+
+            var watermarkWidth = imageSharp.Width * 0.6;  
+            var ratio = watermarkWidth / watermark.Width;
+            var watermarkHeight = watermark.Height * ratio;
+
+            watermark.Mutate(x => x.Resize((int)watermarkWidth, (int)watermarkHeight));
+
+            var center = new Point(
+                (imageSharp.Width - watermark.Width) / 2,
+                (imageSharp.Height - watermark.Height) / 2
+            );
+
+            imageSharp.Mutate(ctx =>
+            {
+                ctx.DrawImage(
+                    watermark,
+                    center,
+                    0.3f
+                );
+            });
+
+
+            await imageSharp.SaveAsJpegAsync(thumbPath, new SixLabors.ImageSharp.Formats.Jpeg.JpegEncoder
+            {
+                Quality = 75
+            });
+        }
+
+
+
+
+        var image = new Entities.Image
         {
             Title = title,
             Description = description,
@@ -111,16 +192,26 @@ public class ImagesController : ControllerBase
             Year = year,
             IsActive = isActive,
             FilePath = "/images/" + fileName,
-            ThumbnailPath = "/images/" + fileName
+            ThumbnailPath = "/images/thumbs/" + fileName
         };
 
         _context.Images.Add(image);
         await _context.SaveChangesAsync();
 
-        await _context.SaveChangesAsync();
+        if (tagIds != null && tagIds.Any())
+        {
+            foreach (var tagId in tagIds)
+            {
+                _context.ImageTags.Add(new ImageTag
+                {
+                    ImageId = image.Id,
+                    TagId = tagId
+                });
+            }
+
+            await _context.SaveChangesAsync();
+        }
 
         return Ok(image);
     }
-
-
 }

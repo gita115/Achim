@@ -30,5 +30,16 @@ public class OrganizationsController : ControllerBase
         return Ok(organization);
     }
 
-    
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var org = await _context.Organizations.FindAsync(id);
+        if (org == null) return NotFound();
+
+        _context.Organizations.Remove(org);
+        await _context.SaveChangesAsync();
+        return Ok();
+    }
+
+
 }
