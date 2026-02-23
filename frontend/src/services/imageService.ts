@@ -32,12 +32,12 @@ const imageService = {
     const res = await api.get<Image[]>(base, { params })
     return res.data
   },
+
   upload: async (formData: FormData): Promise<Image> => {
-    const res = await api.post<Image>("/images/upload", formData, {
-      headers: { "Content-Type": "multipart/form-data" }
-    })
-    return res.data
-  }
+  const res = await api.post<Image>("/images/upload", formData)
+  return res.data
+}
+
 
 
 }

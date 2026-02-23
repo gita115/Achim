@@ -1,22 +1,52 @@
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
+import type { Image } from "../types/models"
 
-const CartContext = createContext<any>(null)
+type CartContextType = {
+  items: Image[]
+  addToCart: (image: Image) => void
+  removeFromCart: (id: number) => void
+  clearCart: () => void
+  isInCart: (id: number) => boolean
+}
 
-export function CartProvider({ children }: any) {
-  const [items, setItems] = useState<any[]>([])
+const CartContext = createContext<CartContextType | null>(null)
 
-  const addToCart = (image: any) => {
-    if (!items.find(i => i.id === image.id))
-      setItems([...items, image])
+export const CartProvider = ({ children }: any) => {
+  const [items, setItems] = useState<Image[]>([])
+
+  useEffect(() => {
+    const saved = localStorage.getItem("cart")
+    if (saved) setItems(JSON.parse(saved))
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(items))
+  }, [items])
+
+  const addToCart = (image: Image) => {
+    if (items.find(i => i.id === image.id)) return
+    setItems([...items, image])
+  }
+
+  const removeFromCart = (id: number) => {
+    setItems(items.filter(i => i.id !== id))
   }
 
   const clearCart = () => setItems([])
 
+  const isInCart = (id: number) => {
+    return items.some(i => i.id === id)
+  }
+
   return (
-    <CartContext.Provider value={{ items, addToCart, clearCart }}>
+    <CartContext.Provider value={{ items, addToCart, removeFromCart, clearCart, isInCart }}>
       {children}
     </CartContext.Provider>
   )
 }
 
-export const useCart = () => useContext(CartContext)
+export const useCart = () => {
+  const ctx = useContext(CartContext)
+  if (!ctx) throw new Error("CartProvider missing")
+  return ctx
+}

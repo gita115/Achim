@@ -1,23 +1,35 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom"
+import { Button } from "../Ui"
 
 export default function AdminLayout() {
   const navigate = useNavigate()
+  const org = localStorage.getItem("organization")
 
   return (
-    <div style={{ display: "flex", minHeight: "100vh" }}>
-      <aside style={{ width: 250, background: "#111827", color: "#fff", padding: 30 }}>
-        <h3>Admin</h3>
-        <div style={{ marginTop: 20, display: "flex", flexDirection: "column", gap: 10 }}>
-          <button onClick={() => navigate("dashboard")}>Dashboard</button>
-          <button onClick={() => navigate("images")}>Images</button>
-          <button onClick={() => navigate("tags")}>Tags</button>
-          <button onClick={() => navigate("categories")}>Categories</button>
-          <button onClick={() => navigate("purchases")}>Purchases</button>
-          <button onClick={() => navigate("organization")}>Organization</button>
+    <div className="admin-container">
+      <aside className="admin-sidebar">
+        <h3>Admin Panel</h3>
+        <div className="admin-links">
+          <Button onClick={() => navigate("dashboard")}>Dashboard</Button>
+          <Button onClick={() => navigate("images")}>Images</Button>
+          <Button onClick={() => navigate("tags")}>Tags</Button>
+          <Button onClick={() => navigate("categories")}>Categories</Button>
+          <Button onClick={() => navigate("purchases")}>Purchases</Button>
+          <Button onClick={() => navigate("organization")}>Organization</Button>
+          <Button onClick={() => navigate("gallery")}>Gallery</Button>
         </div>
+        {org && (
+          <div className="admin-logout">
+            <span>Hello, {org}</span>
+            <Button variant="secondary" onClick={()=>{
+              localStorage.clear()
+              navigate("/login")
+            }}>Logout</Button>
+          </div>
+        )}
       </aside>
 
-      <div style={{ flex: 1, padding: 30, background: "#f3f4f6" }}>
+      <div className="admin-content">
         <Outlet />
       </div>
     </div>

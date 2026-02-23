@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Button } from "../components/Ui"
+import { Button, Card } from "../components/Ui"
 import { organizationService } from "../services/organizationService"
 
 export default function AdminOrganizations() {
@@ -24,6 +24,10 @@ export default function AdminOrganizations() {
         setPassword("")
         load()
     }
+    const deleteOrg = async (id: number) => {
+        await organizationService.remove(id)
+        load()
+      }
 
     return (
         <div>
@@ -33,9 +37,13 @@ export default function AdminOrganizations() {
             <input value={password} type="password" onChange={e => setPassword(e.target.value)} placeholder="Password" />
             <Button onClick={add}>Add</Button>
 
+            
             {orgs.map(o => (
-                <div key={o.id}>{o.name}</div>
-            ))}
+                    <Card key={o.id}>
+                      {o.name}
+                      <Button onClick={() => deleteOrg(o.id)}>Delete</Button>
+                    </Card>
+                  ))}
         </div>
     )
 }

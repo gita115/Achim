@@ -28,7 +28,7 @@ public class AuthController : ControllerBase
 
         return Ok(new
         {
-            organization = org.Name,
+            name = org.Name,
             isAdmin = org.Name == "gitty"
         });
     }

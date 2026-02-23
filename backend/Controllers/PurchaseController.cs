@@ -34,13 +34,23 @@ public class PurchasesController : ControllerBase
     [HttpPost("pay")]
     public async Task<IActionResult> Pay(List<int> imageIds)
     {
-        foreach (var id in imageIds)
+        var userId = 1;
+
+        foreach (var id in imageIds.Distinct())
         {
+            var alreadyExists = await _context.Purchases
+                .AnyAsync(p => p.UserId == userId && p.ImageId == id);
+
+            if (alreadyExists) continue;
+
+            var image = await _context.Images.FindAsync(id);
+            if (image == null) continue;
+
             _context.Purchases.Add(new Purchase
             {
-                UserId = 1,
+                UserId = userId,
                 ImageId = id,
-                Amount = 0,
+                Amount = image.Price,
                 PurchaseDate = DateTime.UtcNow,
                 PaymentStatus = "Completed",
                 PaymentProvider = "Demo"
@@ -50,5 +60,6 @@ public class PurchasesController : ControllerBase
         await _context.SaveChangesAsync();
         return Ok();
     }
+
 
 }

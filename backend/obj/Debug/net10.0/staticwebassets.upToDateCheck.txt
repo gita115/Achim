@@ -1,0 +1,14 @@
+wwwroot\images\2004_25_בדיקה.jpg
+wwwroot\images\2018_29_וילה.jpg
+wwwroot\images\2018_90_טוליפ.jpg
+wwwroot\images\2022_60_אבטיח.jpg
+wwwroot\images\2026_45_כדור_ים.jpg
+wwwroot\images\d0e66028-b78a-443d-9e2e-921b3a66c290.png
+wwwroot\images\d8f0e8ca-25a9-4a13-bc3b-9f76725d55dc.png
+wwwroot\images\d996295e-539a-400b-a6d4-96cbe71909c3.png
+wwwroot\images\fdc46d06-65e0-4418-9dc8-d53705f3ff9f.png
+wwwroot\logo.png
+wwwroot\images\c76b0ad0-cb56-4d71-8844-e8d89e42fbdf_ציפור.jpg
+wwwroot\images\thumbs\c76b0ad0-cb56-4d71-8844-e8d89e42fbdf_ציפור.jpg
+wwwroot\images\1ae94f1b-028c-4fca-98e4-69301a922aae_גלידה.jpg
+wwwroot\images\thumbs\1ae94f1b-028c-4fca-98e4-69301a922aae_גלידה.jpg

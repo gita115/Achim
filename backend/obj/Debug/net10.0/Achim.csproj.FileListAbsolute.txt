@@ -156,3 +156,7 @@ C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\Achim.genruntimec
 C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\ref\Achim.dll
 C:\Users\gitty\source\projects\Achim\backend\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\gitty\source\projects\Achim\backend\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+C:\Users\gitty\source\projects\Achim\backend\bin\Debug\net10.0\SixLabors.ImageSharp.dll
+C:\Users\gitty\source\projects\Achim\backend\bin\Debug\net10.0\SixLabors.Fonts.dll
+C:\Users\gitty\source\projects\Achim\backend\bin\Debug\net10.0\SixLabors.ImageSharp.Drawing.dll
+C:\Users\gitty\source\projects\Achim\backend\bin\Debug\net10.0\Achim.staticwebassets.runtime.json
