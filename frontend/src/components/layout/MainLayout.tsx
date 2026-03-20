@@ -1,28 +1,28 @@
 import { Outlet, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { Button } from "../Ui"
-import CartDrawer from "../CartDrawer"
+// import CartDrawer from "../CartDrawer"
 
 export default function MainLayout() {
   const navigate = useNavigate()
   const org = localStorage.getItem("organization")
-  const [drawerOpen, setDrawerOpen] = useState(false)
+  // const [drawerOpen, setDrawerOpen] = useState(false)
 
   return (
-    <div className="app-container">
+    <div>
       <header className="app-header">
         <h2 className="app-logo" onClick={() => navigate("/")}>Achim</h2>
-        <div className="header-actions">
+        <div>
           {org ? (
             <>
-              <span className="org-name">Hello, {org}</span>
+              <span>שלום {org}</span>
               <Button variant="secondary" onClick={() => {
                 localStorage.clear()
                 navigate("/login")
               }}>
                 Logout
               </Button>
-              <Button onClick={() => setDrawerOpen(true)}>Cart</Button>
+              {/* <Button onClick={() => setDrawerOpen(true)}>Cart</Button> */}
             </>
           ) : (
             <Button onClick={() => navigate("/login")}>Login</Button>
@@ -34,7 +34,7 @@ export default function MainLayout() {
         <Outlet />
       </main>
 
-      <CartDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
+      {/* <CartDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} /> */}
     </div>
   )
 }

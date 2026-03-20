@@ -54,15 +54,16 @@ import { Routes, Route, Navigate } from "react-router-dom"
 import MainLayout from "../components/layout/MainLayout"
 import AdminLayout from "../components/layout/AdminLayout"
 import Gallery from "../pages/Gallery"
-import Cart from "../pages/Cart"
 import Login from "../pages/Login"
 import AdminDashboard from "../pages/AdminDashboard"
-import AdminImages from "../pages/AdminImages"
+import AdminImages from "../pages/AddImage"
 import AdminTags from "../pages/AdminTags"
 import AdminCategories from "../pages/AdminCategories"
 import Purchases from "../pages/Purchases"
 import AdminOrganizations from "../pages/AdminOrg"
 import Checkout from "../pages/Checkout"
+import EditImage from "../pages/EditImage"
+import CartDrawer from "../components/CartDrawer"
 
 function RequireAuth({ children }: any) {
   const org = localStorage.getItem("organization")
@@ -82,7 +83,7 @@ export default function AppRouter() {
         <Route path="/login" element={<Login />} />
         <Route path="/cart" element={
           <RequireAuth>
-            <Cart />
+            <CartDrawer />
           </RequireAuth>
         } />
         <Route path="/checkout" element={
@@ -104,6 +105,8 @@ export default function AppRouter() {
         <Route path="categories" element={<AdminCategories />} />
         <Route path="purchases" element={<Purchases />} />
         <Route path="organization" element={<AdminOrganizations />} />
+        <Route path="images/edit/:id" element={<EditImage />} />
+
       </Route>
     </Routes>
   )

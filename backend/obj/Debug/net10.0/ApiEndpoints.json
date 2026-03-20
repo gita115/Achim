@@ -106,7 +106,7 @@
   },
   {
     "ContainingType": "ImagesController",
-    "Method": "Get",
+    "Method": "GetImages",
     "RelativePath": "api/Images",
     "HttpMethod": "GET",
     "IsController": true,
@@ -123,8 +123,23 @@
         "IsRequired": false
       },
       {
-        "Name": "tagId",
-        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "Name": "photographer",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "includeInactive",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
         "IsRequired": false
       }
     ],
@@ -132,15 +147,15 @@
   },
   {
     "ContainingType": "ImagesController",
-    "Method": "Create",
-    "RelativePath": "api/Images",
-    "HttpMethod": "POST",
+    "Method": "GetById",
+    "RelativePath": "api/Images/{id}",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "image",
-        "Type": "Entities.Image",
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -160,8 +175,8 @@
         "IsRequired": true
       },
       {
-        "Name": "image",
-        "Type": "Entities.Image",
+        "Name": "dto",
+        "Type": "ImageSaveDto",
         "IsRequired": true
       }
     ],
@@ -185,83 +200,68 @@
   },
   {
     "ContainingType": "ImagesController",
-    "Method": "Upload",
-    "RelativePath": "api/Images/upload",
+    "Method": "BulkUpload",
+    "RelativePath": "api/Images/bulk-upload",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "ContentType",
+        "Name": "files",
+        "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Title",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "ContentDisposition",
+        "Name": "Description",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "Headers",
-        "Type": "Microsoft.AspNetCore.Http.IHeaderDictionary",
-        "IsRequired": false
-      },
-      {
-        "Name": "Length",
-        "Type": "System.Int64",
-        "IsRequired": false
-      },
-      {
-        "Name": "Name",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "FileName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "title",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "description",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "categoryId",
+        "Name": "CategoryId",
         "Type": "System.Int32",
         "IsRequired": false
       },
       {
-        "Name": "price",
+        "Name": "Photographer",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Year",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Price",
         "Type": "System.Decimal",
         "IsRequired": false
       },
       {
-        "Name": "photographer",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "year",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "isActive",
+        "Name": "IsActive",
         "Type": "System.Boolean",
         "IsRequired": false
       },
       {
-        "Name": "tagIds",
+        "Name": "TagIds",
         "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ImagesController",
+    "Method": "GetPhotographers",
+    "RelativePath": "api/Images/photographers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -346,6 +346,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PurchasesController",
+    "Method": "GetStats",
+    "RelativePath": "api/Purchases/stats",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

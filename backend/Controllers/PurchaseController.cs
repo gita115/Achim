@@ -60,6 +60,25 @@ public class PurchasesController : ControllerBase
         await _context.SaveChangesAsync();
         return Ok();
     }
-
+    [HttpGet("stats")]
+    public async Task<IActionResult> GetStats()
+    {
+        var stats = new
+        {
+            TotalImages = await _context.Images.CountAsync(),
+            ActiveImages = await _context.Images.CountAsync(i => i.IsActive),
+            TotalPurchases = await _context.Purchases.CountAsync(),
+            TotalEarnings = await _context.Purchases.SumAsync(p => p.Amount),
+            SalesHistory = await _context.Purchases
+                .GroupBy(p => new { p.PurchaseDate.Year, p.PurchaseDate.Month })
+                .Select(g => new {
+                    Date = $"{g.Key.Month}/{g.Key.Year}",
+                    Total = g.Sum(p => p.Amount)
+                })
+                .Take(6)
+                .ToListAsync()
+        };
+        return Ok(stats);
+    }
 
 }

@@ -12,12 +12,16 @@ type CartContextType = {
 const CartContext = createContext<CartContextType | null>(null)
 
 export const CartProvider = ({ children }: any) => {
-  const [items, setItems] = useState<Image[]>([])
+  // const [items, setItems] = useState<Image[]>([])
+  const [items, setItems] = useState<Image[]>(() => {
+  const saved = localStorage.getItem("cart")
+  return saved ? JSON.parse(saved) : []
+})
 
-  useEffect(() => {
-    const saved = localStorage.getItem("cart")
-    if (saved) setItems(JSON.parse(saved))
-  }, [])
+  // useEffect(() => {
+  //   const saved = localStorage.getItem("cart")
+  //   if (saved) setItems(JSON.parse(saved))
+  // }, [])
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(items))

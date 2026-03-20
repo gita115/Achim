@@ -10,6 +10,8 @@ export default function AdminCategories() {
   const [deleteTarget, setDeleteTarget] = useState<Category | null>(null)
   const [deleteMode, setDeleteMode] = useState<"deleteAll" | "moveToRoot" | "moveToOther">("deleteAll")
   const [newParentId, setNewParentId] = useState<number | null>(null)
+const [inlineName, setInlineName] = useState("")
+
 
   useEffect(() => {
     load()
@@ -92,6 +94,36 @@ export default function AdminCategories() {
 
           {hasChildren && isExpanded &&
             renderTree(node.subCategories!, level + 1)}
+            {parentId === node.id && (
+  <div style={{ marginLeft: (level + 1) * 24, marginTop: 6 }}>
+    <input
+      placeholder="Child name..."
+      value={inlineName}
+      onChange={e => setInlineName(e.target.value)}
+      style={{ padding: 6, borderRadius: 6 }}
+    />
+    <button
+      onClick={async () => {
+        if (!inlineName) return
+
+        await categoryService.create({
+          id: 0,
+          name: inlineName,
+          parentCategoryId: node.id
+        })
+
+        setInlineName("")
+        setParentId(null)
+        load()
+      }}
+    >
+      ✔
+    </button>
+
+    <button onClick={() => setParentId(null)}>✖</button>
+  </div>
+)}
+
         </div>
       )
     })

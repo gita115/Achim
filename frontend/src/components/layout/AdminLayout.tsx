@@ -1,5 +1,5 @@
 import { Outlet, useNavigate } from "react-router-dom"
-import { Button } from "../Ui"
+// import { Button } from "../Ui"
 
 export default function AdminLayout() {
   const navigate = useNavigate()
@@ -10,21 +10,53 @@ export default function AdminLayout() {
       <aside className="admin-sidebar">
         <h3>Admin Panel</h3>
         <div className="admin-links">
-          <Button onClick={() => navigate("dashboard")}>Dashboard</Button>
-          <Button onClick={() => navigate("images")}>Images</Button>
-          <Button onClick={() => navigate("tags")}>Tags</Button>
-          <Button onClick={() => navigate("categories")}>Categories</Button>
-          <Button onClick={() => navigate("purchases")}>Purchases</Button>
-          <Button onClick={() => navigate("organization")}>Organization</Button>
-          <Button onClick={() => navigate("gallery")}>Gallery</Button>
+          <button onClick={() => navigate("dashboard")}>  📊 Dashboard
+</button>
+          
+          <button
+          className={window.location.pathname.includes("images") ? "active" : ""} 
+          onClick={() => navigate("images")}
+          >
+            🖼️ Images
+          </button>
+          <button 
+          className={window.location.pathname.includes("tags") ? "active" : ""} 
+          onClick={() => navigate("tags")}
+          >
+            🏷️ Tags
+          </button>
+          <button 
+          className={window.location.pathname.includes("categories") ? "active" : ""} 
+          onClick={() => navigate("categories")}
+          >
+            📁 Categories
+          </button>
+          <button 
+          className={window.location.pathname.includes("purchases") ? "active" : ""} 
+          onClick={() => navigate("purchases")}
+          >
+            🛒 Purchases
+          </button>
+          <button 
+          className={window.location.pathname.includes("organization") ? "active" : ""} 
+          onClick={() => navigate("organization")}
+          >
+            🏢 Organization
+          </button>
+          <button 
+          className={window.location.pathname.includes("gallery") ? "active" : ""} 
+          onClick={() => navigate("gallery")}
+          >
+            📷 Gallery
+          </button>
         </div>
         {org && (
           <div className="admin-logout">
-            <span>Hello, {org}</span>
-            <Button variant="secondary" onClick={()=>{
+            <span>שלום {org}</span>
+            <button className="secondary" onClick={()=>{
               localStorage.clear()
               navigate("/login")
-            }}>Logout</Button>
+            }}>Logout</button>
           </div>
         )}
       </aside>

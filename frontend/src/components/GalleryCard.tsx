@@ -1,4 +1,6 @@
+import { useNavigate } from "react-router-dom"
 import type { Image } from "../types/models"
+import { useState } from "react"
 
 type Props = {
   image: Image
@@ -7,6 +9,7 @@ type Props = {
   onDelete?: (id: number) => void
   cart?: Image[]
   onToggleCart?: (img: Image) => void
+  onToggleActive?: (img: Image) => void
 }
 
 export default function GalleryCard({
@@ -15,10 +18,12 @@ export default function GalleryCard({
   onEdit,
   onDelete,
   cart = [],
-  onToggleCart
+  onToggleCart,
+  onToggleActive
 }: Props) {
 
   const isInCart = () => cart.find(i => i.id === image.id)
+  const navigate = useNavigate()
 
   return (
     <div className="image-card">
@@ -40,12 +45,14 @@ export default function GalleryCard({
 
       {isAdmin ? (
         <div style={{ display: "flex", gap: 8 }}>
-          <button className="secondary-btn" onClick={() => onEdit?.(image)}>
+          <button className="secondary-btn" onClick={() => {onEdit?.(image); navigate(`/admin/images/edit/${image.id}`)}
+}>
             Edit
           </button>
           <button className="primary-btn" onClick={() => onDelete?.(image.id)}>
             Delete
           </button>
+         <label className="checkbox">{image.isActive?"":"Not " }Active <input type="checkbox" checked={image.isActive} onChange={() => onToggleActive?.(image)}/></label>
         </div>
       ) : (
         <button

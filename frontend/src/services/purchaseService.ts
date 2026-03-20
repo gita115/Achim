@@ -13,6 +13,10 @@ export const purchaseService = {
 
   pay: async (purchases: number[]) => {
     return await api.post("/purchases/pay", purchases)
+  },
+  getStats: async () => {
+    const res = await api.get("/purchases/stats")
+    return res.data
   }
 }
 
