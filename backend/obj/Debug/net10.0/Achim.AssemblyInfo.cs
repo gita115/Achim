@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Achim")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e81dc39a81b5d2261d41ce8a74aa116b90ab144")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0632e45efc8357023d69dcd67307e5b38c4e5b34")]
 [assembly: System.Reflection.AssemblyProductAttribute("Achim")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Achim")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
