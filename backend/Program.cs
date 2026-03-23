@@ -52,7 +52,9 @@ var app = builder.Build();
 app.UseCors("AllowFrontend");
 
 app.UseAuthentication();   
-app.UseAuthorization();   
+app.UseAuthorization();
+app.UseStaticFiles();
+
 
 app.MapControllers();
 app.Run();

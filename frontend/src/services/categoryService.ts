@@ -1,22 +1,27 @@
-import { http } from "./http"
+import { api } from "./api"
 
 export const categoryService = {
   getAll: async () => {
-    const res = await http.get("/categories")
+    const res = await api.get("/categories")
     return res.data
   },
 
   create: async (category: any) => {
-    const res = await http.post("/categories", category)
+    const res = await api.post("/categories", category)
     return res.data
   },
 
   update: async (id: number, category: any) => {
-    const res = await http.put(`/categories/${id}`, category)
+    const res = await api.put(`/categories/${id}`, category)
     return res.data
   },
 
-  remove: async (id: number) => {
-    await http.delete(`/categories/${id}`)
+  delete: async (id: number, option: string, newParentId?: number | null) => {
+    await api.delete(`/categories/${id}`, {
+      params: {
+        option,
+        newParentId
+      }
+    })
   }
 }

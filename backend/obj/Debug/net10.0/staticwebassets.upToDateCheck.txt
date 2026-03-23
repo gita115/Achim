@@ -1,0 +1,105 @@
+wwwroot\images\1ae94f1b-028c-4fca-98e4-69301a922aae_גלידה.jpg
+wwwroot\images\2018_29_וילה.jpg
+wwwroot\images\2018_90_טוליפ.jpg
+wwwroot\images\2022_60_אבטיח.jpg
+wwwroot\images\2026_45_כדור_ים.jpg
+wwwroot\images\c76b0ad0-cb56-4d71-8844-e8d89e42fbdf_ציפור.jpg
+wwwroot\images\thumbs\1ae94f1b-028c-4fca-98e4-69301a922aae_גלידה.jpg
+wwwroot\images\thumbs\c76b0ad0-cb56-4d71-8844-e8d89e42fbdf_ציפור.jpg
+wwwroot\logo.png
+wwwroot\images\390f0f14-6438-4378-b781-3a51b5fb315d_אבטיח.jpg
+wwwroot\images\thumbs\390f0f14-6438-4378-b781-3a51b5fb315d_אבטיח.jpg
+wwwroot\images\4401a02c-2f1f-43d5-a4e9-7b9b4eeb2cf3_גלידה.jpg
+wwwroot\images\thumbs\4401a02c-2f1f-43d5-a4e9-7b9b4eeb2cf3_גלידה.jpg
+wwwroot\images\dbbea596-23ce-45c9-9cea-84e1fa7e0cfe_כדור פורח.jpg
+wwwroot\images\thumbs\dbbea596-23ce-45c9-9cea-84e1fa7e0cfe_כדור פורח.jpg
+wwwroot\images\42f8316e-6da2-4173-a8a3-74a712014506_בית מפואר.jpg
+wwwroot\images\thumbs\42f8316e-6da2-4173-a8a3-74a712014506_בית מפואר.jpg
+wwwroot\images\c06b4e51-41b8-4f62-9e23-0d0b1f3356ca_מדוזה.jpg
+wwwroot\images\thumbs\c06b4e51-41b8-4f62-9e23-0d0b1f3356ca_מדוזה.jpg
+wwwroot\images\d166abf3-0ae7-471e-98aa-8a82ac09a789_בית ביער.jpg
+wwwroot\images\thumbs\d166abf3-0ae7-471e-98aa-8a82ac09a789_בית ביער.jpg
+wwwroot\images\f2854371-868c-4537-84c0-af5a6bdced0b_שקיעה.jpg
+wwwroot\images\thumbs\f2854371-868c-4537-84c0-af5a6bdced0b_שקיעה.jpg
+wwwroot\images\59f21203-df6d-41b3-a7c4-ac04888bd84e_פרחים אדומים.jpg
+wwwroot\images\thumbs\59f21203-df6d-41b3-a7c4-ac04888bd84e_פרחים אדומים.jpg
+wwwroot\images\083546f2-5ff9-46b8-8fda-ce9740af8eb0_פלמינגו.jpg
+wwwroot\images\thumbs\083546f2-5ff9-46b8-8fda-ce9740af8eb0_פלמינגו.jpg
+wwwroot\images\b4e7a1fc-0167-4de5-aa3d-043cf9a4c8df_עצי דקל.jpg
+wwwroot\images\thumbs\b4e7a1fc-0167-4de5-aa3d-043cf9a4c8df_עצי דקל.jpg
+wwwroot\images\3745b50f-3615-4a31-ad6a-7240b8ffb880_נהר ועצים.jpg
+wwwroot\images\thumbs\3745b50f-3615-4a31-ad6a-7240b8ffb880_נהר ועצים.jpg
+wwwroot\images\b9183200-96ff-40d2-b7b2-a31bd76b2325_אבטיח עם משקה מרענן.jpg
+wwwroot\images\thumbs\b9183200-96ff-40d2-b7b2-a31bd76b2325_אבטיח עם משקה מרענן.jpg
+wwwroot\images\2e0b57bc-9740-4d7a-9143-a9e2258e72bb_וילה מפוארת.jpg
+wwwroot\images\thumbs\2e0b57bc-9740-4d7a-9143-a9e2258e72bb_וילה מפוארת.jpg
+wwwroot\whiteLogo.png
+wwwroot\blackLogo.png
+wwwroot\images\8b01a090-d782-49c6-a97e-c8fe18897630_כדור ים.jpg
+wwwroot\images\9a68b61c-a0c7-4caf-ab15-11b520b382ce_כדור ים.jpg
+wwwroot\images\thumbs\8b01a090-d782-49c6-a97e-c8fe18897630_כדור ים.jpg
+wwwroot\images\thumbs\9a68b61c-a0c7-4caf-ab15-11b520b382ce_כדור ים.jpg
+wwwroot\images\0f5f4c39-f253-4237-b8c6-67e056b66aaf_tryhgf.jpg
+wwwroot\images\thumbs\0f5f4c39-f253-4237-b8c6-67e056b66aaf_tryhgf.jpg
+wwwroot\images\34a16608-1bf9-44ec-b7f4-a762ef8e0969_yito.jpg
+wwwroot\images\thumbs\34a16608-1bf9-44ec-b7f4-a762ef8e0969_yito.jpg
+wwwroot\images\124eb851-deeb-44be-82ae-34be4789084f_ng.png
+wwwroot\images\thumbs\124eb851-deeb-44be-82ae-34be4789084f_ng.png
+wwwroot\images\28fa85e6-19ad-4798-a4df-770750335f26_jujj.png
+wwwroot\images\thumbs\28fa85e6-19ad-4798-a4df-770750335f26_jujj.png
+wwwroot\images\f7e0c1aa-00eb-41b9-933f-623570a0cad0_hj.png
+wwwroot\images\thumbs\f7e0c1aa-00eb-41b9-933f-623570a0cad0_hj.png
+wwwroot\images\74ded27f-4855-46e0-8752-aed4d1cebd2a_hj.png
+wwwroot\images\thumbs\74ded27f-4855-46e0-8752-aed4d1cebd2a_hj.png
+wwwroot\images\b167902d-56fb-428a-b33e-0d2795d68e23_hj.png
+wwwroot\images\thumbs\b167902d-56fb-428a-b33e-0d2795d68e23_hj.png
+wwwroot\images\16c06c73-ee07-4ea0-969b-fb8dd41301d2_hj.png
+wwwroot\images\thumbs\16c06c73-ee07-4ea0-969b-fb8dd41301d2_hj.png
+wwwroot\images\b4bdf3cc-4ce6-4914-bf70-413a534de177_,kb.jpg
+wwwroot\images\thumbs\b4bdf3cc-4ce6-4914-bf70-413a534de177_,kb.jpg
+wwwroot\images\f34da0dd-414f-4f3a-a39f-d360ef3ebf23_uiy.jpg
+wwwroot\images\thumbs\f34da0dd-414f-4f3a-a39f-d360ef3ebf23_uiy.jpg
+wwwroot\images\cf289c43-10b9-4b2d-bd2d-a2b78cef491a_ui.jpg
+wwwroot\images\thumbs\cf289c43-10b9-4b2d-bd2d-a2b78cef491a_ui.jpg
+wwwroot\images\ddfa36cf-7192-42ea-9bf0-36c44eef2b5a_i.png
+wwwroot\images\thumbs\ddfa36cf-7192-42ea-9bf0-36c44eef2b5a_i.png
+wwwroot\images\beefb02e-e2c6-49ac-b758-48bf495c6a80_,lm.jpg
+wwwroot\images\thumbs\beefb02e-e2c6-49ac-b758-48bf495c6a80_,lm.jpg
+wwwroot\images\eceeb929-394d-4103-a5cc-bdc3d0a8fb13_j.jpg
+wwwroot\images\thumbs\eceeb929-394d-4103-a5cc-bdc3d0a8fb13_j.jpg
+wwwroot\images\1ceced98-5bbf-44cf-be9f-f15c7f9b895f_וילה מרהיבה.jpg
+wwwroot\images\thumbs\1ceced98-5bbf-44cf-be9f-f15c7f9b895f_וילה מרהיבה.jpg
+wwwroot\images\20fbcfae-f5c2-414b-b73a-30571170cd40_not active.jpg
+wwwroot\images\thumbs\20fbcfae-f5c2-414b-b73a-30571170cd40_not active.jpg
+wwwroot\images\b29d9fc8-1b1f-483e-ab18-6850319818d3_active.jpg
+wwwroot\images\thumbs\b29d9fc8-1b1f-483e-ab18-6850319818d3_active.jpg
+wwwroot\images\b3e2e706-4344-466b-8e72-89ed1742a207_ju.png
+wwwroot\images\thumbs\b3e2e706-4344-466b-8e72-89ed1742a207_ju.png
+wwwroot\images\45645d48-2ab9-4d39-b7e7-1a1d3397f0e5.jpg
+wwwroot\images\ae0c24ca-8636-41d9-9125-f2349a96f018.jpg
+wwwroot\images\fbc1b154-0048-48c3-9d5b-89826e9f9d9e.jpg
+wwwroot\images\thumbs\45645d48-2ab9-4d39-b7e7-1a1d3397f0e5.jpg
+wwwroot\images\thumbs\ae0c24ca-8636-41d9-9125-f2349a96f018.jpg
+wwwroot\images\thumbs\fbc1b154-0048-48c3-9d5b-89826e9f9d9e.jpg
+wwwroot\images\4be87ea5-f6cf-4e2f-9302-46e54b6a5ef2.jpg
+wwwroot\images\92934a50-71d3-41ab-b93c-ccc7d56bbca9.jpg
+wwwroot\images\ca34a18e-c843-4c5f-bbfc-803610fdae2c.jpg
+wwwroot\images\thumbs\4be87ea5-f6cf-4e2f-9302-46e54b6a5ef2.jpg
+wwwroot\images\thumbs\92934a50-71d3-41ab-b93c-ccc7d56bbca9.jpg
+wwwroot\images\thumbs\ca34a18e-c843-4c5f-bbfc-803610fdae2c.jpg
+wwwroot\images\36fc5b6b-3009-49f4-a3f0-4e2228a02967.jpg
+wwwroot\images\a0e55870-ac86-4c98-affb-a8c9dbc1a931.jpg
+wwwroot\images\df5833ce-e7af-400b-a628-10abc1636e7d.jpg
+wwwroot\images\thumbs\36fc5b6b-3009-49f4-a3f0-4e2228a02967.jpg
+wwwroot\images\thumbs\df5833ce-e7af-400b-a628-10abc1636e7d.jpg
+wwwroot\images\thumbs\a0e55870-ac86-4c98-affb-a8c9dbc1a931.jpg
+wwwroot\images\74898120-8ca6-4c92-8cc3-1ba34544107b.jpg
+wwwroot\images\ef91b679-01a0-4c1b-966e-9b295ebc16b4.jpg
+wwwroot\images\thumbs\74898120-8ca6-4c92-8cc3-1ba34544107b.jpg
+wwwroot\images\thumbs\ef91b679-01a0-4c1b-966e-9b295ebc16b4.jpg
+wwwroot\images\428587cf-871b-4d1c-a3b3-8f27065b8292.jpg
+wwwroot\images\b492d72a-5c02-4ad8-b713-9263bfd61f7e.jpg
+wwwroot\images\ef8430cd-fba0-4334-9efc-be45929489f7.jpg
+wwwroot\images\thumbs\428587cf-871b-4d1c-a3b3-8f27065b8292.jpg
+wwwroot\images\thumbs\b492d72a-5c02-4ad8-b713-9263bfd61f7e.jpg
+wwwroot\images\thumbs\ef8430cd-fba0-4334-9efc-be45929489f7.jpg

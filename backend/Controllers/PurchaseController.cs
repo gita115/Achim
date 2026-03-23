@@ -15,7 +15,6 @@ public class PurchasesController : ControllerBase
         _context = context;
     }
 
-    [Authorize]
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
@@ -24,7 +23,6 @@ public class PurchasesController : ControllerBase
             .ToListAsync());
     }
 
-    [Authorize]
     [HttpPost]
     public async Task<IActionResult> Create(Purchase purchase)
     {
@@ -32,4 +30,55 @@ public class PurchasesController : ControllerBase
         await _context.SaveChangesAsync();
         return Ok(purchase);
     }
+
+    [HttpPost("pay")]
+    public async Task<IActionResult> Pay(List<int> imageIds)
+    {
+        var userId = 1;
+
+        foreach (var id in imageIds.Distinct())
+        {
+            var alreadyExists = await _context.Purchases
+                .AnyAsync(p => p.UserId == userId && p.ImageId == id);
+
+            if (alreadyExists) continue;
+
+            var image = await _context.Images.FindAsync(id);
+            if (image == null) continue;
+
+            _context.Purchases.Add(new Purchase
+            {
+                UserId = userId,
+                ImageId = id,
+                Amount = image.Price,
+                PurchaseDate = DateTime.UtcNow,
+                PaymentStatus = "Completed",
+                PaymentProvider = "Demo"
+            });
+        }
+
+        await _context.SaveChangesAsync();
+        return Ok();
+    }
+    [HttpGet("stats")]
+    public async Task<IActionResult> GetStats()
+    {
+        var stats = new
+        {
+            TotalImages = await _context.Images.CountAsync(),
+            ActiveImages = await _context.Images.CountAsync(i => i.IsActive),
+            TotalPurchases = await _context.Purchases.CountAsync(),
+            TotalEarnings = await _context.Purchases.SumAsync(p => p.Amount),
+            SalesHistory = await _context.Purchases
+                .GroupBy(p => new { p.PurchaseDate.Year, p.PurchaseDate.Month })
+                .Select(g => new {
+                    Date = $"{g.Key.Month}/{g.Key.Year}",
+                    Total = g.Sum(p => p.Amount)
+                })
+                .Take(6)
+                .ToListAsync()
+        };
+        return Ok(stats);
+    }
+
 }

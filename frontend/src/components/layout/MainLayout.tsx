@@ -1,13 +1,40 @@
-import { Outlet } from "react-router-dom"
-import Navbar from "../Navbar"
+import { Outlet, useNavigate } from "react-router-dom"
+import { useState } from "react"
+import { Button } from "../Ui"
+// import CartDrawer from "../CartDrawer"
 
 export default function MainLayout() {
+  const navigate = useNavigate()
+  const org = localStorage.getItem("organization")
+  // const [drawerOpen, setDrawerOpen] = useState(false)
+
   return (
-    <>
-      <Navbar />
-      <div style={{ padding: 20 }}>
+    <div>
+      <header className="app-header">
+        <h2 className="app-logo" onClick={() => navigate("/")}>Achim</h2>
+        <div>
+          {org ? (
+            <>
+              <span>שלום {org}</span>
+              <Button variant="secondary" onClick={() => {
+                localStorage.clear()
+                navigate("/login")
+              }}>
+                Logout
+              </Button>
+              {/* <Button onClick={() => setDrawerOpen(true)}>Cart</Button> */}
+            </>
+          ) : (
+            <Button onClick={() => navigate("/login")}>Login</Button>
+          )}
+        </div>
+      </header>
+
+      <main className="app-main">
         <Outlet />
-      </div>
-    </>
+      </main>
+
+      {/* <CartDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} /> */}
+    </div>
   )
 }
